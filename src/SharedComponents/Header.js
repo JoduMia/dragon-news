@@ -5,10 +5,9 @@ import Navbar from 'react-bootstrap/Navbar';
 import { Button, Container, Image } from 'react-bootstrap';
 import LeftSideBar from './LeftSideBar';
 import { AuthContext } from '../Contexts/AuthProvider/AuthProvider';
-import { FaUserAlt } from 'react-icons/fa';
 
 const Header = () => {
-  const {user, logOut} = useContext(AuthContext);
+  const {user, logOut } = useContext(AuthContext);
   console.log(user);
 
   const signOut = () => {
@@ -19,6 +18,7 @@ const Header = () => {
       console.log(`${error.message} occured`);
     })
   };
+
 
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className='mb-5'>
@@ -32,8 +32,11 @@ const Header = () => {
             <Nav.Link><Link to={'/register'}>Register</Link></Nav.Link>
           </Nav>
           <Nav>
-            <Nav.Link href="#deets">{user?.displayName}</Nav.Link>
-            {user?.photoURL ? <Image style={{height: '40px'}} roundedCircle src={user?.photoURL} /> : <FaUserAlt className='text-white' />}
+            <Nav.Link><Link to='/updateprofile'>{user?.displayName}</Link></Nav.Link>
+
+            {
+              user?.photoURL && <Image src={user.photoURL} style={{height: '40px', width: '40px'}} roundedCircle />
+            }
             {
               user && <Button onClick={signOut} variant='outline-dark' className='text-white'>LogOut</Button>
             }
