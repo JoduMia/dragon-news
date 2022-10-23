@@ -3,14 +3,14 @@ import { Link, useLoaderData } from 'react-router-dom';
 
 const SingleNews = () => {
 
-    const {image_url, title, total_view, details} = useLoaderData();
+    const {image_url, title, total_view, details,category_id} = useLoaderData();
   return (
     <div>
         <img src={image_url} alt="" className='img-fluid' />
         <h3>{title}</h3>
         <h4>Views: {total_view}</h4>
         <p>{details}</p>
-        <Link to={'/'}>Back to Home</Link>
+        <Link to={`/category/${category_id}`}>Related category news.</Link>
     </div>
   )
 }
