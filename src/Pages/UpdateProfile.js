@@ -1,16 +1,19 @@
 import React, { useContext, useState } from 'react'
 import { Button, Form } from 'react-bootstrap'
+import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../Contexts/AuthProvider/AuthProvider';
 
 const UpdateProfile = () => {
     const [accepted, setAccepted] = useState(false);
     const {updateUserInfo, user} = useContext(AuthContext);
-
     const navigate = useNavigate();
 
-    const handleSubmitt = (e) => {
+    const [error, setError] = useState('');
+
+    const handleSubmit = (e) => {
         e.preventDefault();
+        setError('');
         const form = e.target;
         const name = form.name.value;
         const photo = form.photo.value;
@@ -24,16 +27,17 @@ const UpdateProfile = () => {
         };
         updateUserInfo(profile)
           .then(()=> {
-            console.log('user updated');
-            navigate('/')
-          }).catch(error =>console.log(error.message));
+            navigate('/');
+            toast.success('User profile updated succesfully!');
+          })
+          .catch(error =>setError(error.message));
       };
 
       const handleChecking = (e) => {
         setAccepted(e.target.checked)
       };
   return (
-    <Form onSubmit={handleSubmitt}>
+    <Form onSubmit={handleSubmit}>
 
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Email</Form.Label>
@@ -59,6 +63,8 @@ const UpdateProfile = () => {
       <Button variant="primary" type="submit" disabled={!accepted}>
         Update
       </Button>
+
+      <p className='text-danger'>{error}</p>
     </Form>
   )
 }
