@@ -5,7 +5,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 
 const Login = () => {
-    const {signWithEmailPass} = useContext(AuthContext);
+    const {signWithEmailPass, setLoading} = useContext(AuthContext);
     const navigate = useNavigate();
 
     const location = useLocation();
@@ -22,13 +22,19 @@ const Login = () => {
         signWithEmailPass(email, password)
         .then(result => {
             const user = result.user;
-            
+            console.log(user);
+
             if(user.emailVerified){
               navigate(from, {replace: true});
+            } else {
+              toast.error('Please verify your email and then try login !!!')
             }
         })
         .catch(error => {
             toast.error(error.message);
+        })
+        .finally(() => {
+          setLoading(false)
         })
     };
 

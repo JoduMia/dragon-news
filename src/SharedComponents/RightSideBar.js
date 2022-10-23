@@ -9,14 +9,13 @@ import { AuthContext } from '../Contexts/AuthProvider/AuthProvider';
 
 const RightSideBar = () => {
 
-  const {GoogleAuth, setUser} = useContext(AuthContext);
+  const {GoogleAuth} = useContext(AuthContext);
 
   const googleSignIn = () => {
     GoogleAuth()
     .then(result => {
       const user = result.user;
       console.log(user);
-      setUser(user);
     })
   };
   return (

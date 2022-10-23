@@ -8,7 +8,6 @@ import { AuthContext } from '../Contexts/AuthProvider/AuthProvider';
 
 const Header = () => {
   const {user, logOut } = useContext(AuthContext);
-  console.log(user);
 
   const signOut = () => {
     logOut()
@@ -27,12 +26,12 @@ const Header = () => {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link><Link to={'/'}>Home</Link></Nav.Link>
-            <Nav.Link><Link to={'/login'}>Login</Link></Nav.Link>
-            <Nav.Link><Link to={'/register'}>Register</Link></Nav.Link>
+            <><Link to={'/'}>Home</Link></>
+            <><Link to={'/login'}>Login</Link></>
+            <><Link to={'/register'}>Register</Link></>
           </Nav>
           <Nav>
-            <Nav.Link><Link to='/updateprofile'>{user?.displayName}</Link></Nav.Link>
+            <><Link to='/updateprofile'>{user?.displayName}</Link></>
 
             {
               user?.photoURL && <Image src={user.photoURL} style={{height: '40px', width: '40px'}} roundedCircle />
