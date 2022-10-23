@@ -21,18 +21,19 @@ const Header = () => {
 
 
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className='mb-5'>
+    <Navbar collapseOnSelect expand="lg" bg="dark" sticky='top' variant="dark" className='mb-5'>
       <Container>
-        <Navbar.Brand><Link to='/'>Dragon News</Link></Navbar.Brand>
+        <Navbar.Brand><Link to='/' className='text-primary text-decoration-none'>Dragon News</Link></Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="me-auto">
-            <><Link to={'/'}>Home</Link></>
-            <><Link to={'/login'}>Login</Link></>
-            <><Link to={'/register'}>Register</Link></>
+          <Nav className="me-auto gap-3">
+              {
+                !user && <><Link to={'/login'} className='text-white text-decoration-none'>Login</Link>
+                <Link to={'/register'} className='text-white text-decoration-none'>Register</Link></>
+              }
           </Nav>
-          <Nav>
-            <><Link >{user?.displayName}</Link></>
+          <Nav className='align-items-center'>
+            <h6 className='m-0 pe-3 text-uppercase text-white'>{user?.displayName}</h6>
 
             <Link to={'/updateprofile'}>
             {

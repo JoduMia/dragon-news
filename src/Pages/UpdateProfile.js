@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { Button, Form } from 'react-bootstrap'
-import { Link, Navigate, useNavigate } from 'react-router-dom'
-import { AuthContext } from '../Contexts/AuthProvider/AuthProvider'
+import { Link, useNavigate } from 'react-router-dom'
+import { AuthContext } from '../Contexts/AuthProvider/AuthProvider';
 
 const UpdateProfile = () => {
     const [accepted, setAccepted] = useState(false);
@@ -47,7 +47,7 @@ const UpdateProfile = () => {
 
       <Form.Group className="mb-3" controlId="formBasicPhoto">
         <Form.Label>User image</Form.Label>
-        <Form.Control defaultValue={user?.photoURL} type="text" name="photo" placeholder="Enter Image url" />
+        <Form.Control type="text" name="photo" placeholder="Enter Image url" />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicCheckbox">
         <Form.Check

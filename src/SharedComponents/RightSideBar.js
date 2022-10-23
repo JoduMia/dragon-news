@@ -14,8 +14,7 @@ const RightSideBar = () => {
   const googleSignIn = () => {
     GoogleAuth()
     .then(result => {
-      const user = result.user;
-      console.log(user);
+      // const user = result.user;
     })
   };
   return (
