@@ -2,22 +2,15 @@ import React, { useContext } from 'react'
 import { Link } from 'react-router-dom';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { Button, Container, Image } from 'react-bootstrap';
+import { Container, Image } from 'react-bootstrap';
 import LeftSideBar from './LeftSideBar';
 import { AuthContext } from '../Contexts/AuthProvider/AuthProvider';
 import { FaUserAlt } from 'react-icons/fa';
 
 const Header = () => {
-  const {user, logOut } = useContext(AuthContext);
+  const {user } = useContext(AuthContext);
 
-  const signOut = () => {
-    logOut()
-    .then(()=> {
-      console.log('User got signed out');
-    }).catch(error => {
-      console.log(`${error.message} occured`);
-    })
-  };
+
 
 
   return (
@@ -40,9 +33,6 @@ const Header = () => {
               user?.photoURL ? <Image src={user.photoURL} style={{height: '40px', width: '40px'}} roundedCircle /> : <FaUserAlt to='/updateprofile' className='text-white' />
             }
             </Link>
-            {
-              user && <Button onClick={signOut} variant='outline-dark' className='text-white'>LogOut</Button>
-            }
           </Nav>
           <div className='d-block d-lg-none'>
             <LeftSideBar />
