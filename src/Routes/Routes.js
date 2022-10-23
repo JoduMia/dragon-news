@@ -14,7 +14,7 @@ const router = createBrowserRouter(createRoutesFromElements(
         <Route index element={ <Home /> } loader={homeLoader}/>
         <Route path='/login' element={ <Login /> }/>
         <Route path='/register' element={ <Register /> }/>
-        <Route path='/updateprofile' element={ <UpdateProfile /> }/>
+        <Route path='/updateprofile' element={ <PrivateRoute><UpdateProfile /></PrivateRoute> }/>
         <Route path='/terms' element={ <TermsAndCondition /> }/>
         <Route path="/news/:id" element={ <PrivateRoute><SingleNews /></PrivateRoute> } loader={newsLoader}/>
         <Route path="/category/:id" element={ <Category /> } loader={catLoader}/>

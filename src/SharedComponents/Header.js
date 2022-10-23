@@ -5,6 +5,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import { Button, Container, Image } from 'react-bootstrap';
 import LeftSideBar from './LeftSideBar';
 import { AuthContext } from '../Contexts/AuthProvider/AuthProvider';
+import { FaUserAlt } from 'react-icons/fa';
 
 const Header = () => {
   const {user, logOut } = useContext(AuthContext);
@@ -31,11 +32,13 @@ const Header = () => {
             <><Link to={'/register'}>Register</Link></>
           </Nav>
           <Nav>
-            <><Link to='/updateprofile'>{user?.displayName}</Link></>
+            <><Link >{user?.displayName}</Link></>
 
+            <Link to={'/updateprofile'}>
             {
-              user?.photoURL && <Image src={user.photoURL} style={{height: '40px', width: '40px'}} roundedCircle />
+              user?.photoURL ? <Image src={user.photoURL} style={{height: '40px', width: '40px'}} roundedCircle /> : <FaUserAlt to='/updateprofile' className='text-white' />
             }
+            </Link>
             {
               user && <Button onClick={signOut} variant='outline-dark' className='text-white'>LogOut</Button>
             }
