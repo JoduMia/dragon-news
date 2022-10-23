@@ -6,7 +6,7 @@ const LeftSideBar = () => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/categories-news')
+    fetch('https://dragon-news-server-eight-delta.vercel.app/categories-news')
     .then(res => res.json())
     .then(data => {
       setCategories(data);

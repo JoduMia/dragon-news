@@ -15,6 +15,6 @@ const Home = () => {
 
 export default Home;
 export const homeLoader = async () => {
-  const res = await fetch('http://localhost:5000/news')
+  const res = await fetch('https://dragon-news-server-eight-delta.vercel.app/news')
   return res.json();
 };

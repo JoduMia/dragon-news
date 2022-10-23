@@ -18,6 +18,6 @@ const Category = () => {
 export default Category;
 
 export const catLoader = async ({params}) => {
-  const res = await fetch(`http://localhost:5000/category/${params.id}`)
+  const res = await fetch(`https://dragon-news-server-eight-delta.vercel.app/category/${params.id}`)
   return res.json()
 };

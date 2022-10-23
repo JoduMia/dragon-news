@@ -19,6 +19,6 @@ export default SingleNews;
 
 
 export const newsLoader = async ({params}) => {
-    const res = await fetch(`http://localhost:5000/news/${params.id}`);
+    const res = await fetch(`https://dragon-news-server-eight-delta.vercel.app/news/${params.id}`);
     return res.json();
 };
