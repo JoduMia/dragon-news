@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { Button, Form } from 'react-bootstrap'
+import toast from 'react-hot-toast';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 
@@ -15,16 +16,19 @@ const Login = () => {
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password);
+        form.reset();
 
+        //sign in with emailpassword------>
         signWithEmailPass(email, password)
         .then(result => {
             const user = result.user;
-            console.log(user);
-            navigate(from, {replace: true});
+            
+            if(user.emailVerified){
+              navigate(from, {replace: true});
+            }
         })
         .catch(error => {
-            console.log(error.message);
+            toast.error(error.message);
         })
     };
 
